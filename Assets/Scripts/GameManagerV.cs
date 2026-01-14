@@ -20,7 +20,7 @@ public class GameManagerV : MonoBehaviour
     public GameObject RacketUp;
 
     
-    //Referencia para guardar la dirección de la pelota
+    //Referencia para guardar la direcciï¿½n de la pelota
     Vector2 direction;
 
     //Creamos un Singleton
@@ -28,9 +28,9 @@ public class GameManagerV : MonoBehaviour
 
     private void Awake()
     {
-        //Si la instancia está vacía
+        //Si la instancia estï¿½ vacï¿½a
         if (sharedInstance == null)
-            //Rellenalá con todo el código que está dentro de este Script
+            //Rellenalï¿½ con todo el cï¿½digo que estï¿½ dentro de este Script
             sharedInstance = this;
     }
 
@@ -82,7 +82,7 @@ public class GameManagerV : MonoBehaviour
     {
         
     }
-     //Método para empezar juego
+     //Mï¿½todo para empezar juego
     public void StartGame()
     {
         //Al inicio del juego activamos y desactivamos el los juegos
@@ -101,23 +101,23 @@ public class GameManagerV : MonoBehaviour
 
     public void GoalScored()
     {
-        //Ponemos la pelota al marcar un gol en la posición de origen
+        //Ponemos la pelota al marcar un gol en la posiciï¿½n de origen
         Ball.transform.position = Vector2.zero; //Vector2.zero; <-> new Vector2(0,0);
 
-        //Aquí guardamos la velocidad en X que llevaba la pelota e invertimos su signo
-        direction = new Vector2(-Ball.GetComponent<Rigidbody2D>().velocity.x, 0);
+        //Aquï¿½ guardamos la velocidad en X que llevaba la pelota e invertimos su signo
+        direction = new Vector2(-Ball.GetComponent<Rigidbody2D>().linearVelocity.x, 0);
 
         //Paramos la pelota
-        Ball.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        Ball.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
 
-        //Usando Invoke esperamos X segundos antes de llamar a un método
-        Invoke("LaunchBall", 2.0f); //Le decimos el método que quiero invocar y el tiempo que tiene que pasar en segundos para que eso suceda
+        //Usando Invoke esperamos X segundos antes de llamar a un mï¿½todo
+        Invoke("LaunchBall", 2.0f); //Le decimos el mï¿½todo que quiero invocar y el tiempo que tiene que pasar en segundos para que eso suceda
     }
 
-    //Método para hacer que la bola se lance
+    //Mï¿½todo para hacer que la bola se lance
     void LaunchBall()
     {
-        //Aplicamos esa nueva dirección en la bola
-        Ball.GetComponent<Rigidbody2D>().velocity = direction;
+        //Aplicamos esa nueva direcciï¿½n en la bola
+        Ball.GetComponent<Rigidbody2D>().linearVelocity = direction;
     }
 }

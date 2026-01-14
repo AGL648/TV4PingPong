@@ -12,9 +12,9 @@ public class Ball1 : MonoBehaviour
     void Start()
     {
         //La bola se mueve a la derecha
-        GetComponent<Rigidbody2D>().velocity = Vector2.left * speed; //Vector2right
+        GetComponent<Rigidbody2D>().linearVelocity = Vector2.left * speed; //Vector2right
         audioSource = GetComponent<AudioSource>();
-        //Un objeto realiza una acción
+        //Un objeto realiza una acciï¿½n
         
     }
 
@@ -25,68 +25,68 @@ public class Ball1 : MonoBehaviour
     }
 
     /*
-     * El objeto collision del paréntesis contiene la información del choque 
+     * El objeto collision del parï¿½ntesis contiene la informaciï¿½n del choque 
      * En particular, nos interesa saber cuando choca con una pala.
-     * -collision.gameObject: tiene información del objeto contra el cual he colisionado (raqueta)
-     * -collision.transform.position: tiene información de la posición (raqueta)
-     * -collision.collider: tiene información del collider (raqueta)
+     * -collision.gameObject: tiene informaciï¿½n del objeto contra el cual he colisionado (raqueta)
+     * -collision.transform.position: tiene informaciï¿½n de la posiciï¿½n (raqueta)
+     * -collision.collider: tiene informaciï¿½n del collider (raqueta)
      */
-    /*Es un método de Unity que detecta colisión entre dos GO.
-     * Al chocar el objeto contra el que choca le pasa su Colisión por parámetro */
+    /*Es un mï¿½todo de Unity que detecta colisiï¿½n entre dos GO.
+     * Al chocar el objeto contra el que choca le pasa su Colisiï¿½n por parï¿½metro */
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Si la pelota ha colisionado con la pala izquierda
         if (collision.gameObject.name== "RacketBottom")
         {
-            //Obtenemos el factor de golpeo, pasándole la posición de la pelota, la posición de la pala, y lo que mide de alto el collider de la pala (es decir, lo que mide la pala)
+            //Obtenemos el factor de golpeo, pasï¿½ndole la posiciï¿½n de la pelota, la posiciï¿½n de la pala, y lo que mide de alto el collider de la pala (es decir, lo que mide la pala)
             float yF = HitFactor(transform.position, collision.transform.position, collision.collider.bounds.size.x);
-            /*Le damos una nueva dirección a la pala
+            /*Le damos una nueva direcciï¿½n a la pala
              * En este caso con una X a la derecha
              * Y nuestro factor de golpeo calculado
              * Normalizado todo el vector a 1, para que la bola no acelere*/
             Vector2 direction = new Vector2(yF, 1).normalized;
             //Le decimos a la bola que salga con esa velocidad previamente calculada
-            GetComponent<Rigidbody2D>().velocity = direction * speed;
+            GetComponent<Rigidbody2D>().linearVelocity = direction * speed;
         }
 
         //Si la pelota ha colisionado con la pala derecha
         if (collision.gameObject.name == "RacketUp")
         {
-            //Obtenemos el factor de golpeo, pasándole la posición de la pelota, la posición de la pala, y lo que mide de alto el collider de la pala (es decir, lo que mide la pala)
+            //Obtenemos el factor de golpeo, pasï¿½ndole la posiciï¿½n de la pelota, la posiciï¿½n de la pala, y lo que mide de alto el collider de la pala (es decir, lo que mide la pala)
             float yF = HitFactor(transform.position, collision.transform.position, collision.collider.bounds.size.x);
-            /*Le damos una nueva dirección a la pala
+            /*Le damos una nueva direcciï¿½n a la pala
              * En este caso con una X a la derecha
              * Y nuestro factor de golpeo calculado
              * Normalizado todo el vector a 1, para que la bola no acelere*/
             Vector2 direction = new Vector2(yF, -1).normalized;
             //Le decimos a la bola que salga con esa velocidad previamente calculada
-            GetComponent<Rigidbody2D>().velocity = direction * speed;
+            GetComponent<Rigidbody2D>().linearVelocity = direction * speed;
         }
 
         if (collision.gameObject.name == "RacketLeft")
         {
-            //Obtenemos el factor de golpeo, pasándole la posición de la pelota, la posición de la pala, y lo que mide de alto el collider de la pala (es decir, lo que mide la pala)
+            //Obtenemos el factor de golpeo, pasï¿½ndole la posiciï¿½n de la pelota, la posiciï¿½n de la pala, y lo que mide de alto el collider de la pala (es decir, lo que mide la pala)
             float yF = HitFactor(transform.position, collision.transform.position, collision.collider.bounds.size.y);
-            /*Le damos una nueva dirección a la pala
+            /*Le damos una nueva direcciï¿½n a la pala
              * En este caso con una X a la derecha
              * Y nuestro factor de golpeo calculado
              * Normalizado todo el vector a 1, para que la bola no acelere*/
             Vector2 direction = new Vector2(1, yF).normalized;
             //Le decimos a la bola que salga con esa velocidad previamente calculada
-            GetComponent<Rigidbody2D>().velocity = direction * speed;
+            GetComponent<Rigidbody2D>().linearVelocity = direction * speed;
         }
 
         if (collision.gameObject.name == "RacketRight")
         {
-            //Obtenemos el factor de golpeo, pasándole la posición de la pelota, la posición de la pala, y lo que mide de alto el collider de la pala (es decir, lo que mide la pala)
+            //Obtenemos el factor de golpeo, pasï¿½ndole la posiciï¿½n de la pelota, la posiciï¿½n de la pala, y lo que mide de alto el collider de la pala (es decir, lo que mide la pala)
             float yF = HitFactor(transform.position, collision.transform.position, collision.collider.bounds.size.y);
-            /*Le damos una nueva dirección a la pala
+            /*Le damos una nueva direcciï¿½n a la pala
              * En este caso con una X a la derecha
              * Y nuestro factor de golpeo calculado
              * Normalizado todo el vector a 1, para que la bola no acelere*/
             Vector2 direction = new Vector2(-1, yF).normalized;
             //Le decimos a la bola que salga con esa velocidad previamente calculada
-            GetComponent<Rigidbody2D>().velocity = direction * speed;
+            GetComponent<Rigidbody2D>().linearVelocity = direction * speed;
         }
 
         audioSource.Play();
@@ -99,11 +99,11 @@ public class Ball1 : MonoBehaviour
      * 0 - La bola choca contra el centro de la raqueta 
      * -1 - La bola choca contra la parte inferior de la raqueta
      */
-    /*Es un método de tipo 3. En este caso le pasamos 3 parámetros:
-     * - posición actual de la pelota
-     * - posición actual de la pala
+    /*Es un mï¿½todo de tipo 3. En este caso le pasamos 3 parï¿½metros:
+     * - posiciï¿½n actual de la pelota
+     * - posiciï¿½n actual de la pala
      * - altura de la pala
-     * Y el método tal y como le indicamos nos devuelve una variable de tipo float */
+     * Y el mï¿½todo tal y como le indicamos nos devuelve una variable de tipo float */
     private float HitFactor(Vector2 ballPosition, Vector2 racketPosition, float racketHeight)
     {
         return (ballPosition.y - racketPosition.y) / racketHeight;

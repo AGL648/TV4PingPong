@@ -21,7 +21,7 @@ public class RacketMovement2 : MonoBehaviour
         //Obtenemos el valor del eje asignado
         float v = Input.GetAxis(axis);
         Debug.Log(v);
-        //Accedemos al componente del RigidBody del objeto donde está metido el script y le aplicamos una velocidad en Y
-        GetComponent<Rigidbody2D>().velocity = new Vector2(0, v) * racketSpeed;//Multiplicamos por la velocidad de movimiento => 1*25 ó -1*25
+        //Accedemos al componente del RigidBody del objeto donde estï¿½ metido el script y le aplicamos una velocidad en Y
+        GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, v) * racketSpeed;//Multiplicamos por la velocidad de movimiento => 1*25 ï¿½ -1*25
     }
 }
