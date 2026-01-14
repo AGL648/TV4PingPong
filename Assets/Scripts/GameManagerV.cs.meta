@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 274b4595f27e50542bd7b2983e236e83
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - ball: {instanceID: 0}
+  - RacketLeft: {instanceID: 0}
+  - RacketRight: {instanceID: 0}
+  - DottedLine: {instanceID: 0}
+  - LeftScore: {instanceID: 0}
+  - RightScore: {instanceID: 0}
+  - Title: {instanceID: 0}
+  - startButton: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
